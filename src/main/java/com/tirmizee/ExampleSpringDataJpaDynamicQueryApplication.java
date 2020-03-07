@@ -8,6 +8,8 @@ import org.springframework.context.ApplicationContext;
 
 import com.tirmizee.jpa.entities.User;
 import com.tirmizee.jpa.repositories.UserRepository;
+import com.tirmizee.jpa.specification.SearchCriteria;
+import com.tirmizee.jpa.specification.custom.UserSpecifications;
 
 @SpringBootApplication
 public class ExampleSpringDataJpaDynamicQueryApplication implements CommandLineRunner {
@@ -22,8 +24,7 @@ public class ExampleSpringDataJpaDynamicQueryApplication implements CommandLineR
 	@Override
 	public void run(String... args) throws Exception {
 		UserRepository userRepository = context.getBean(UserRepository.class);
-		User user = userRepository.getOne(278L);
-		System.out.println(user.getRole());
+		System.out.println(userRepository.findOne(UserSpecifications.equal(new SearchCriteria("username", null, "tirmizee"))).get());
 	}
 
 }
