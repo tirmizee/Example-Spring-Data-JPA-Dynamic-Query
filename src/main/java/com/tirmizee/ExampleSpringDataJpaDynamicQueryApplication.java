@@ -6,10 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import com.tirmizee.jpa.entities.User;
 import com.tirmizee.jpa.repositories.UserRepository;
-import com.tirmizee.jpa.specification.SearchCriteria;
-import com.tirmizee.jpa.specification.custom.UserSpecifications;
+import com.tirmizee.jpa.specification.SearchCriteriaBuilder;
+import com.tirmizee.jpa.specification.custom.TestSpecification;
 
 @SpringBootApplication
 public class ExampleSpringDataJpaDynamicQueryApplication implements CommandLineRunner {
@@ -24,7 +23,11 @@ public class ExampleSpringDataJpaDynamicQueryApplication implements CommandLineR
 	@Override
 	public void run(String... args) throws Exception {
 		UserRepository userRepository = context.getBean(UserRepository.class);
-		System.out.println(userRepository.findOne(UserSpecifications.equal(new SearchCriteria("username", null, "tirmizee"))).get());
+		SearchCriteriaBuilder searchCriteriaBuilder = new SearchCriteriaBuilder();
+		searchCriteriaBuilder.with("username","tirmizee");
+		searchCriteriaBuilder.with("username","tirmizee");
+		System.out.println(userRepository.findOne(searchCriteriaBuilder.build(TestSpecification.class)).get());
+//		System.out.println(userRepository.findOne(UserSpecifications.equal(new SearchCriteria("username", null, "tirmizee"))).get());
 	}
 
 }

@@ -5,25 +5,21 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.springframework.data.jpa.domain.Specification;
-
 import com.tirmizee.jpa.entities.User;
 import com.tirmizee.jpa.specification.SearchCriteria;
+import com.tirmizee.jpa.specification.SearchSpecification;
 
-public class UserEqual implements Specification<User> {
+public class TestSpecification extends SearchSpecification<User>{
 
-	private static final long serialVersionUID = 9029584193026580660L;
-	
-	private SearchCriteria searchCriteria;
-	
-	public UserEqual(SearchCriteria searchCriteria) {
-		super();
-		this.searchCriteria = searchCriteria;
+	private static final long serialVersionUID = 1L;
+
+	public TestSpecification(SearchCriteria searchCriteria) {
+		super(searchCriteria);
 	}
 
 	@Override
 	public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-		return criteriaBuilder.equal(root.<String>get(searchCriteria.getKey()), searchCriteria.getValue());
+		return criteriaBuilder.like(root.<String>get(searchCriteria.getKey()), "%" + searchCriteria.getValue() + "%");
 	}
 
 }
