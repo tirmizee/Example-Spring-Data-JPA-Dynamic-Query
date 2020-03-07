@@ -13,4 +13,10 @@ public class UserSpecifications {
 	    };
 	}
 	
+	public static Specification<User> like(SearchCriteria criteria) {
+		return (root, query, cb) -> { 
+	        return cb.like(root.<String>get(criteria.getKey()), "%" + criteria.getValue() + "%");
+	    };
+	}
+	
 }

@@ -3,6 +3,8 @@ package com.tirmizee.jpa.specification;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.jpa.domain.Specification;
+
 public class SearchCriteriaBuilder {
 	
 	private List<SearchCriteria> searchCriterias;
@@ -28,6 +30,10 @@ public class SearchCriteriaBuilder {
 	public SearchCriteriaBuilder with(SearchCriteria searchCriteria) {
 		searchCriterias.add(searchCriteria);
 		return this;
+	}
+	
+	public Specification<?> build(){
+		return null;
 	}
 	
 }
