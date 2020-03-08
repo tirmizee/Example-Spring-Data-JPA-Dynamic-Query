@@ -1,4 +1,4 @@
-package com.tirmizee.mapper;
+package com.tirmizee.mapper.custom;
 
 import org.mapstruct.Mapper;
 

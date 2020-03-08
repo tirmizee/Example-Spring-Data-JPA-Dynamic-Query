@@ -6,10 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import com.tirmizee.jpa.repositories.UserRepository;
-import com.tirmizee.jpa.specification.SearchCriteriaBuilder;
-import com.tirmizee.jpa.specification.custom.UserLike;
-import com.tirmizee.jpa.specification.custom.UserMultiLike;
+import com.tirmizee.jpa.repositories.RoleRepository;
 
 @SpringBootApplication
 public class ExampleSpringDataJpaDynamicQueryApplication implements CommandLineRunner {
@@ -23,7 +20,7 @@ public class ExampleSpringDataJpaDynamicQueryApplication implements CommandLineR
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+		RoleRepository roleRepository = context.getBean(RoleRepository.class);
 //		UserRepository userRepository = context.getBean(UserRepository.class);
 //		
 //		SearchCriteriaBuilder searchUserLikeBuilder = new SearchCriteriaBuilder();
@@ -34,7 +31,7 @@ public class ExampleSpringDataJpaDynamicQueryApplication implements CommandLineR
 //		searchUserMultiLikeBuilder.with("username","tirmizee");
 //		System.out.println(userRepository.findOne(searchUserMultiLikeBuilder.build(UserMultiLike.class)));
 		
-		
+		System.out.println(roleRepository.getOne(1L).getPermissions().size());
 	}
 
 }

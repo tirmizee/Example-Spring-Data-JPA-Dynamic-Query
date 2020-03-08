@@ -12,7 +12,7 @@ import com.tirmizee.controller.data.UserDetailDTO;
 import com.tirmizee.controller.data.UserDetailSearchDTO;
 import com.tirmizee.jpa.repositories.UserRepository;
 import com.tirmizee.jpa.specification.custom.UserFindByCriteria;
-import com.tirmizee.mapper.UserMapper;
+import com.tirmizee.mapper.custom.UserMapper;
 
 @RestController
 @RequestMapping(path = "/users")
