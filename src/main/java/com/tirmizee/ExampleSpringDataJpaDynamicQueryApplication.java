@@ -8,7 +8,8 @@ import org.springframework.context.ApplicationContext;
 
 import com.tirmizee.jpa.repositories.UserRepository;
 import com.tirmizee.jpa.specification.SearchCriteriaBuilder;
-import com.tirmizee.jpa.specification.custom.TestSpecification;
+import com.tirmizee.jpa.specification.custom.UserLike;
+import com.tirmizee.jpa.specification.custom.UserMultiLike;
 
 @SpringBootApplication
 public class ExampleSpringDataJpaDynamicQueryApplication implements CommandLineRunner {
@@ -23,11 +24,15 @@ public class ExampleSpringDataJpaDynamicQueryApplication implements CommandLineR
 	@Override
 	public void run(String... args) throws Exception {
 		UserRepository userRepository = context.getBean(UserRepository.class);
-		SearchCriteriaBuilder searchCriteriaBuilder = new SearchCriteriaBuilder();
-		searchCriteriaBuilder.with("username","tirmizee");
-		searchCriteriaBuilder.with("username","tirmizee");
-		System.out.println(userRepository.findOne(searchCriteriaBuilder.build(TestSpecification.class)).get());
-//		System.out.println(userRepository.findOne(UserSpecifications.equal(new SearchCriteria("username", null, "tirmizee"))).get());
+		
+		SearchCriteriaBuilder searchUserLikeBuilder = new SearchCriteriaBuilder();
+		searchUserLikeBuilder.with("username","tirmizee");
+		
+		SearchCriteriaBuilder searchUserMultiLikeBuilder = new SearchCriteriaBuilder();
+		searchUserMultiLikeBuilder.with("username","tirmizee");
+		
+		System.out.println(userRepository.findOne(searchUserLikeBuilder.build(UserLike.class)));
+		System.out.println(userRepository.findOne(searchUserMultiLikeBuilder.build(UserMultiLike.class)));
 	}
 
 }

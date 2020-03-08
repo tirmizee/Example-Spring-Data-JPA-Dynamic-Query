@@ -9,11 +9,11 @@ import com.tirmizee.jpa.entities.User;
 import com.tirmizee.jpa.specification.SearchCriteria;
 import com.tirmizee.jpa.specification.SearchSpecification;
 
-public class TestSpecification extends SearchSpecification<User>{
+public class UserLike extends SearchSpecification<User>{
 
 	private static final long serialVersionUID = 1L;
 
-	public TestSpecification(SearchCriteria searchCriteria) {
+	public UserLike(SearchCriteria searchCriteria) {
 		super(searchCriteria);
 	}
 

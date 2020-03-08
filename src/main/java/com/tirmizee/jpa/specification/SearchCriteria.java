@@ -12,7 +12,6 @@ public class SearchCriteria {
 	public static final String OR_PREDICATE_FLAG = "OR";
 	public static final String AND_PREDICATE_FLAG = "AND";
 	
-	
 	private String predicate;
 	private String key;
     private String operation;
