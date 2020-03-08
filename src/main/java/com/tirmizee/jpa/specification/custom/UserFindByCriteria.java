@@ -1,8 +1,5 @@
 package com.tirmizee.jpa.specification.custom;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
@@ -28,10 +25,9 @@ public class UserFindByCriteria extends SearchBodySpecification<UserDetailSearch
 	@Override
 	public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
 		
-		List<Predicate> predicates = new ArrayList<Predicate>();
 		Join<User, Profile> profile = root.join("profile", JoinType.INNER);
 		Join<User, Role> role = root.join("role", JoinType.INNER);
-		
+
 		if (serachBody.getEmail() != null) {
 			predicates.add(criteriaBuilder.like(profile.<String>get("email"), "%" + StringUtils.trimToEmpty(serachBody.getEmail()) + "%"));
 		}
