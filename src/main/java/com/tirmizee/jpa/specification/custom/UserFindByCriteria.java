@@ -28,12 +28,24 @@ public class UserFindByCriteria extends SearchBodySpecification<UserDetailSearch
 		Join<User, Profile> profile = root.join("profile", JoinType.INNER);
 		Join<User, Role> role = root.join("role", JoinType.INNER);
 
+		if (serachBody.getUsername() != null) {
+			predicates.add(criteriaBuilder.like(root.<String>get("username"), "%" + StringUtils.trimToEmpty(serachBody.getUsername()) + "%"));
+		}
+		
 		if (serachBody.getEmail() != null) {
 			predicates.add(criteriaBuilder.like(profile.<String>get("email"), "%" + StringUtils.trimToEmpty(serachBody.getEmail()) + "%"));
 		}
 		
 		if (serachBody.getFirstName() != null) {
 			predicates.add(criteriaBuilder.like(profile.<String>get("firstName"), "%" + StringUtils.trimToEmpty(serachBody.getFirstName()) + "%"));
+		}
+		
+		if (serachBody.getLastName() != null) {
+			predicates.add(criteriaBuilder.like(profile.<String>get("lastName"), "%" + StringUtils.trimToEmpty(serachBody.getLastName()) + "%"));
+		}
+		
+		if (serachBody.getTel() != null) {
+			predicates.add(criteriaBuilder.like(profile.<String>get("tel"), "%" + StringUtils.trimToEmpty(serachBody.getTel()) + "%"));
 		}
 		
 		if (serachBody.getRoleId() != null) {

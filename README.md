@@ -8,3 +8,5 @@
 - https://www.baeldung.com/spring-rest-api-query-search-language-tutorial
 
 - https://javadeveloperzone.com/spring/spring-jpa-dynamic-query-example/
+
+- https://dimitr.im/writing-dynamic-queries-with-spring-data-jpa

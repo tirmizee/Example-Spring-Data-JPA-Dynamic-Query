@@ -2,13 +2,13 @@ package com.tirmizee.jpa.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -63,7 +63,7 @@ public class Role implements Serializable {
 	@OneToMany
 	private List<User> users;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "ROLE_MAP_PERMISSION", 
 		joinColumns = { @JoinColumn(name = "ROLE_ID", referencedColumnName = "ROLE_ID", nullable = false)},
 		inverseJoinColumns = { @JoinColumn(name = "PER_ID", referencedColumnName = "PER_ID", nullable = false)})
