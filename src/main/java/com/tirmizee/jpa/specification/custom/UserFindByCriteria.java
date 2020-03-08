@@ -12,6 +12,7 @@ import javax.persistence.criteria.Root;
 
 import com.tirmizee.controller.data.UserDetailSearchDTO;
 import com.tirmizee.jpa.entities.Profile;
+import com.tirmizee.jpa.entities.Role;
 import com.tirmizee.jpa.entities.User;
 import com.tirmizee.jpa.specification.SearchBodySpecification;
 import com.tirmizee.utils.StringUtils;
@@ -28,10 +29,19 @@ public class UserFindByCriteria extends SearchBodySpecification<UserDetailSearch
 	public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
 		
 		List<Predicate> predicates = new ArrayList<Predicate>();
-		Join<User, Profile> join = root.join("profile", JoinType.INNER);
+		Join<User, Profile> profile = root.join("profile", JoinType.INNER);
+		Join<User, Role> role = root.join("role", JoinType.INNER);
 		
 		if (serachBody.getEmail() != null) {
-			predicates.add(criteriaBuilder.like(join.<String>get("email"), "%" + StringUtils.trimToEmpty(serachBody.getEmail()) + "%"));
+			predicates.add(criteriaBuilder.like(profile.<String>get("email"), "%" + StringUtils.trimToEmpty(serachBody.getEmail()) + "%"));
+		}
+		
+		if (serachBody.getFirstName() != null) {
+			predicates.add(criteriaBuilder.like(profile.<String>get("firstName"), "%" + StringUtils.trimToEmpty(serachBody.getFirstName()) + "%"));
+		}
+		
+		if (serachBody.getRoleId() != null) {
+			predicates.add(criteriaBuilder.equal(role.<Integer>get("roleId"), serachBody.getRoleId()));
 		}
 		
 		return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
