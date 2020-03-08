@@ -23,16 +23,18 @@ public class ExampleSpringDataJpaDynamicQueryApplication implements CommandLineR
 
 	@Override
 	public void run(String... args) throws Exception {
-		UserRepository userRepository = context.getBean(UserRepository.class);
 		
-		SearchCriteriaBuilder searchUserLikeBuilder = new SearchCriteriaBuilder();
-		searchUserLikeBuilder.with("username","tirmizee");
+//		UserRepository userRepository = context.getBean(UserRepository.class);
+//		
+//		SearchCriteriaBuilder searchUserLikeBuilder = new SearchCriteriaBuilder();
+//		searchUserLikeBuilder.with("username","tirmizee");
+//		System.out.println(userRepository.findOne(searchUserLikeBuilder.build(UserLike.class)));
+//		
+//		SearchCriteriaBuilder searchUserMultiLikeBuilder = new SearchCriteriaBuilder();
+//		searchUserMultiLikeBuilder.with("username","tirmizee");
+//		System.out.println(userRepository.findOne(searchUserMultiLikeBuilder.build(UserMultiLike.class)));
 		
-		SearchCriteriaBuilder searchUserMultiLikeBuilder = new SearchCriteriaBuilder();
-		searchUserMultiLikeBuilder.with("username","tirmizee");
 		
-		System.out.println(userRepository.findOne(searchUserLikeBuilder.build(UserLike.class)));
-		System.out.println(userRepository.findOne(searchUserMultiLikeBuilder.build(UserMultiLike.class)));
 	}
 
 }
