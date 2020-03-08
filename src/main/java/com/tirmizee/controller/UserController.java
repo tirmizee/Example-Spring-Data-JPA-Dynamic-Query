@@ -28,7 +28,7 @@ public class UserController extends ApiController {
 	public Page<UserDetailDTO> paging(UserDetailSearchDTO search){
 		Pageable pageable = PageRequest.of(search.getPage(), search.getSize());
 		UserFindByCriteria userFindByCriteria = new UserFindByCriteria(search);
-		Page<UserDetailDTO> page = userRepository.findAll(userFindByCriteria, pageable).map(userMapper::tUserDetailDTO);
+		Page<UserDetailDTO> page = userRepository.findAll(userFindByCriteria, pageable).map(userMapper::toUserDetailDTO);
 		return page;
 	}
 	

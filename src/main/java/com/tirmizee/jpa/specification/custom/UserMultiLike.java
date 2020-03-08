@@ -7,9 +7,9 @@ import javax.persistence.criteria.Root;
 
 import com.tirmizee.jpa.entities.User;
 import com.tirmizee.jpa.specification.SearchCriteria;
-import com.tirmizee.jpa.specification.SearchSpecification;
+import com.tirmizee.jpa.specification.SearchCriteriaSpecification;
 
-public class UserMultiLike extends SearchSpecification<User> {
+public class UserMultiLike extends SearchCriteriaSpecification<User> {
 
 	private static final long serialVersionUID = 1L;
 

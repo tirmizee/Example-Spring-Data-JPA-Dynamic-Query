@@ -8,6 +8,6 @@ import com.tirmizee.jpa.entities.User;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 	
-	UserDetailDTO tUserDetailDTO(User user);
+	UserDetailDTO toUserDetailDTO(User user);
 
 }

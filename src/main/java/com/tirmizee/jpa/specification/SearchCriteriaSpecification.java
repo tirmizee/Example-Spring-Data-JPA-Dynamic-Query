@@ -9,13 +9,13 @@ import org.springframework.data.jpa.domain.Specification;
  * @param <T>
  */
 
-public abstract class SearchSpecification<T> implements Specification<T> {
+public abstract class SearchCriteriaSpecification<T> implements Specification<T> {
 
 	private static final long serialVersionUID = -4483421821450268917L;
 	
 	protected SearchCriteria searchCriteria;
 
-	public SearchSpecification(SearchCriteria searchCriteria) {
+	public SearchCriteriaSpecification(SearchCriteria searchCriteria) {
 		this.searchCriteria = searchCriteria;
 	}
 
