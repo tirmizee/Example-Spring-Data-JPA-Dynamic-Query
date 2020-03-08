@@ -16,11 +16,11 @@ import com.tirmizee.utils.StringUtils;
 
 public class UserFindByCriteria extends SearchBodySpecification<UserDetailSearchDTO, User> {
 
+	private static final long serialVersionUID = 1L;
+	
 	public UserFindByCriteria(UserDetailSearchDTO serachBody) {
 		super(serachBody);
 	}
-
-	private static final long serialVersionUID = 1L;
 
 	@Override
 	public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -40,7 +40,7 @@ public class UserFindByCriteria extends SearchBodySpecification<UserDetailSearch
 			predicates.add(criteriaBuilder.equal(role.<Integer>get("roleId"), serachBody.getRoleId()));
 		}
 		
-		return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+		return super.toPredicate(root, query, criteriaBuilder);
 	}
 
 }
