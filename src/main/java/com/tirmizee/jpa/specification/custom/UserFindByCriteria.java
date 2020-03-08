@@ -27,7 +27,7 @@ public class UserFindByCriteria extends SearchBodySpecification<UserDetailSearch
 		
 		Join<User, Profile> profile = root.join("profile", JoinType.INNER);
 		Join<User, Role> role = root.join("role", JoinType.INNER);
-
+ 
 		if (serachBody.getUsername() != null) {
 			predicates.add(criteriaBuilder.like(root.<String>get("username"), "%" + StringUtils.trimToEmpty(serachBody.getUsername()) + "%"));
 		}
