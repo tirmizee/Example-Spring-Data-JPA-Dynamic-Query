@@ -2,10 +2,12 @@ package com.tirmizee.jpa.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -50,5 +52,8 @@ public class Permission implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name="UPDATE_DATE")
 	private Date updateDate;
-
+	
+	@ManyToMany
+	private List<Role> roles;
+	
 }

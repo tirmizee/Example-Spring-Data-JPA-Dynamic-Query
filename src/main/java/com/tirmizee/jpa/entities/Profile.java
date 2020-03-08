@@ -6,17 +6,19 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 /**
  * The persistent class for the PROFILE database table.
@@ -68,6 +70,10 @@ public class Profile implements Serializable {
 	@Column(name="UPDATE_DATE")
 	private Date updateDate;
 
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="BRANCH_CODE",referencedColumnName = "BRANCH_CODE", insertable = false, updatable = false)
+	private BankBranch bankBranch;
+	
 	@OneToMany
 	private List<User> users;
 
