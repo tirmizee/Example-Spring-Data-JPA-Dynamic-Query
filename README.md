@@ -1,6 +1,12 @@
 # Example-Spring-Data-JPA-Dynamic-Query
 
 
+### Example
+
+- JpaSpecificationExecutor
+
+- QueryByExampleExecutor
+
 ### Reference
 
 - https://www.baeldung.com/rest-api-search-language-spring-data-specifications
