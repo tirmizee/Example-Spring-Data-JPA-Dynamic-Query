@@ -15,6 +15,9 @@ public interface UserMapper {
 		@Mapping(source = "profile.email", target = "email"),
 		@Mapping(source = "profile.firstName", target = "firstName"),
 		@Mapping(source = "profile.lastName", target = "lastName"),
+		@Mapping(source = "role.roleId", target = "roleId"),
+		@Mapping(source = "role.roleCode", target = "roleCode"),
+		@Mapping(source = "role.roleName", target = "roleName"),
 		@Mapping(source = "profile.bankBranch.branchName", target = "branchName")
 	})
 	UserDetailDTO toUserDetailDTO(User user);

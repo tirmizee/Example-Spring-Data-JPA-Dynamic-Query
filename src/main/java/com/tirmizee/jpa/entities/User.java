@@ -85,11 +85,11 @@ public class User implements Serializable {
 	@Column(name="PROFILE_ID" ,insertable = false, updatable = false)
 	private Long profileId;
 
-	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "PROFILE_ID",foreignKey = @ForeignKey(name = "FK_PROFILE_ID"))
 	private Profile profile;
 
-	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "FK_ROLE_ID", foreignKey = @ForeignKey(name = "FK_ROLE_ID"))
 	private Role role;
 

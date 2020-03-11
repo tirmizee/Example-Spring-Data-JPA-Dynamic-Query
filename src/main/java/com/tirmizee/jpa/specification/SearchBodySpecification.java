@@ -28,11 +28,11 @@ public abstract class SearchBodySpecification<B, T> implements Specification<T> 
 		this.predicates = new ArrayList<Predicate>();
 	}
 	
-	public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+	public Predicate buildPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
 		return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 	}
 	
-	public Predicate toParallelPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+	public Predicate buildParallelPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
 		return criteriaBuilder.and(predicates.parallelStream().toArray(Predicate[]::new));
 	}
 	

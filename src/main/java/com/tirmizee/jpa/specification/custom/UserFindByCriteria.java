@@ -8,7 +8,6 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import com.tirmizee.controller.data.UserDetailSearchDTO;
-import com.tirmizee.jpa.entities.Permission;
 import com.tirmizee.jpa.entities.Profile;
 import com.tirmizee.jpa.entities.Role;
 import com.tirmizee.jpa.entities.User;
@@ -29,7 +28,7 @@ public class UserFindByCriteria extends SearchBodySpecification<UserDetailSearch
 		Join<User, Profile> profile = root.join("profile", JoinType.INNER);
 		Join<User, Role> role = root.join("role", JoinType.INNER);
 //		Join<Role, Permission> permission = role.join("permissions", JoinType.INNER);
- 
+		
 		if (serachBody.getUsername() != null) {
 			predicates.add(criteriaBuilder.like(root.<String>get("username"), "%" + StringUtils.trimToEmpty(serachBody.getUsername()) + "%"));
 		}
@@ -54,7 +53,7 @@ public class UserFindByCriteria extends SearchBodySpecification<UserDetailSearch
 			predicates.add(criteriaBuilder.equal(role.<Integer>get("roleId"), serachBody.getRoleId()));
 		}
 		
-		return super.toPredicate(root, query, criteriaBuilder);
+		return super.buildPredicate(root, query, criteriaBuilder);
 	}
 
 }
